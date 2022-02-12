@@ -33,9 +33,9 @@
 
 ## Exercices Idea
 
-- [Exercice 1: Create Helm Chart]()
-- [Exercice 1: Merge ....]()
-- [Exercice 2: Helmfile for managing helm chart](https://jhooq.com/helmfile-manage-helmchart/)
+- [Exercice 1: Create Helm Chart](exercises/ex1.README.md)
+- [Exercice 2: Merge ....]()
+- [Exercice 10: Helmfile for managing helm chart](https://jhooq.com/helmfile-manage-helmchart/)
 
 ## Create
 

@@ -25,3 +25,9 @@ endif
 hcreate: ## Create new helm chart name=test
 hcreate: check-cmd
 	@helm create playground/$(name)
+
+create: ## Create new helm chart from template name=exN. Should fail if exercise exists.
+create: check-cmd
+	@mkdir playground/$(name)
+	@cp -r playground/template/ playground/$(name)/
+	@tree playground/$(name)
