@@ -31,11 +31,13 @@
 
 ## Exercices
 
+- [Exercice 1: Create Helm Chart](exercises/ex1.README.md)
+- [Exercice 2: Merge Object and feature Flag](exercises/ex2.README.md)
+
 ## Exercices Idea
 
-- [Exercice 1: Create Helm Chart](exercises/ex1.README.md)
-- [Exercice 2: Merge ....]()
 - [Exercice 10: Helmfile for managing helm chart](https://jhooq.com/helmfile-manage-helmchart/)
+- [Helm: functions](https://helm.sh/docs/chart_template_guide/functions_and_pipelines/)
 
 ## Create
 
@@ -44,6 +46,7 @@
 ## Resources
 
 - [Helm in 10 Minutes](https://banzaicloud.com/blog/creating-helm-charts-part-2/)
+- [Helm: make the most from helm](https://blog.flant.com/advanced-helm-templating/)
 
 <!-- resources -->
 [template.generate]: https://github.com/ik-workshop/workshop-helm-v1/generate

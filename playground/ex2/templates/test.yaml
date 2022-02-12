@@ -1,5 +1,40 @@
-spec:
-{{- if or .Values.affinity (eq .Values.apm "enabled") }}
-  affinity:
-  {{ include "additionalNodeAffinity" ( .Values ) | indent 4 }}
-{{- end }}
+affinity:
+  {{- if and .Values.affinity (eq .Values.apm "enabled") }}
+  {{- if not (hasKey .Values.affinity "nodeAffinity") -}}
+  {{/* lets support case when nodeAffinity is not defined */}}
+  {{- range $key, $value := $.Values.affinity }}
+    {{ $key }}:
+      {{- toYaml $value | nindent 6 }}
+  {{- end }}
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: apm
+            operator: In
+            values:
+            - enabled
+  {{- else if and (hasKey .Values.affinity "nodeAffinity") (not (hasKey .Values.affinity.nodeAffinity "requiredDuringSchedulingIgnoredDuringExecution")) }}
+  {{/* nodeAffinity present and not present prerequiredDuringSchedulingIgnoredDuringExecution  */}}
+  {{- range $key, $value := $.Values.affinity }}
+    {{ $key }}:
+      {{- toYaml $value | nindent 6 }}
+      {{- if (eq $key "nodeAffinity") }}
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: apm
+            operator: In
+            values:
+            - enabled
+      {{- end }}
+  {{- end }}
+  {{- else if and (hasKey .Values.affinity "nodeAffinity") (hasKey .Values.affinity.nodeAffinity "requiredDuringSchedulingIgnoredDuringExecution") }}
+  {{/* nodeAffinity and requiredDuringSchedulingIgnoredDuringExecution both present. Apm not enabled. Should Warn!!  */}}
+  {{ end }}
+  {{- else if and .Values.affinity }}
+  {{- .Values.affinity | toYaml | nindent 4 }}
+  {{- else if (eq .Values.apm "enabled") }}
+  nodeAffinity:
+    {{- include "ex.apm.afinity" . | nindent 4 }}
+  {{ end }}

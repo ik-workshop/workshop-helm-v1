@@ -1,5 +1,7 @@
 .EXPORT_ALL_VARIABLES:
 
+TMP_FOLDER := sandbox
+
 help:
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
@@ -32,3 +34,8 @@ create: check-cmd
 	@cp -r playground/template/ playground/$(name)/
 	@tree playground/$(name)
 	@touch exercises/$(name).README.md
+
+template: ## Render chart templates locally and create them in sandbox foler.
+template: check-cmd
+	# @rm -rf $(TMP_FOLDER)
+	@helm template $(name) ./playground/$(name) --output-dir ./$(TMP_FOLDER) --values ./playground/$(name)/values.yaml --debug
