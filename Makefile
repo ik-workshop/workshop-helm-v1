@@ -13,3 +13,15 @@ hooks: ## install pre commit.
 
 validate: ## Validate files with pre-commit hooks
 	@pre-commit run --all-files
+
+check-cmd:
+ifndef name
+		$(error The name variable is not set)
+endif
+ifneq ($(findstring ex,$(name)),ex)
+		$(error The name variable does not contain 'ex')
+endif
+
+hcreate: ## Create new helm chart name=test
+hcreate: check-cmd
+	@helm create playground/$(name)

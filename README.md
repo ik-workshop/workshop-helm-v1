@@ -20,6 +20,8 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ## Contents
 
+- [Exercices](#exercices)
+- [Exercices Idea](#exercices-idea)
 - [Create](#create)
 - [Resources](#resources)
 
@@ -27,11 +29,21 @@
 
 ---
 
+## Exercices
+
+## Exercices Idea
+
+- [Exercice 1: Create Helm Chart]()
+- [Exercice 1: Merge ....]()
+- [Exercice 2: Helmfile for managing helm chart](https://jhooq.com/helmfile-manage-helmchart/)
+
 ## Create
 
 [**Create a repository using this template →**][template.generate]
 
 ## Resources
+
+- [Helm in 10 Minutes](https://banzaicloud.com/blog/creating-helm-charts-part-2/)
 
 <!-- resources -->
 [template.generate]: https://github.com/ik-workshop/workshop-blueprint/generate
