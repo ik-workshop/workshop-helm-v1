@@ -8,6 +8,7 @@
 - [Otputs](#otputs)
   - [Case 0](#case-0)
   - [Case 1](#case-1)
+  - [Case 3](#case-3)
 - [Resources](#resources)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -58,6 +59,56 @@ affinity:
           operator: In
           values:
           - enabled
+```
+
+### Case 3
+
+_Input_
+
+```yml
+affinity:
+  podAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: service
+            operator: In
+            values: [“S1”]
+        topologyKey: failure-domain.beta.kubernetes.io/zone
+  nodeAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: another-node-label-key
+            operator: In
+            values:
+            - another-node-label-value
+apm: disabled
+```
+
+_Output_
+
+```yml
+affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - preference:
+          matchExpressions:
+          - key: another-node-label-key
+            operator: In
+            values:
+            - another-node-label-value
+        weight: 1
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: service
+            operator: In
+            values:
+            - “S1”
+        topologyKey: failure-domain.beta.kubernetes.io/zone
 ```
 
 ## Resources

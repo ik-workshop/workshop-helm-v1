@@ -5,23 +5,23 @@
 replicaCount: 1
 
 affinity:
-  # podAffinity:
-  #   requiredDuringSchedulingIgnoredDuringExecution:
-  #     - labelSelector:
-  #         matchExpressions:
-  #         - key: service
-  #           operator: In
-  #           values: [“S1”]
-  #       topologyKey: failure-domain.beta.kubernetes.io/zone
-  # nodeAffinity:
-  #   preferredDuringSchedulingIgnoredDuringExecution:
-  #     - weight: 1
-  #       preference:
-  #         matchExpressions:
-  #         - key: another-node-label-key
-  #           operator: In
-  #           values:
-  #           - another-node-label-value
+  podAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: service
+            operator: In
+            values: [“S1”]
+        topologyKey: failure-domain.beta.kubernetes.io/zone
+  nodeAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: another-node-label-key
+            operator: In
+            values:
+            - another-node-label-value
   #   requiredDuringSchedulingIgnoredDuringExecution:
   #     nodeSelectorTerms:
   #       - matchExpressions:
