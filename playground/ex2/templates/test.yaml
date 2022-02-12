@@ -31,3 +31,5 @@ affinity:
   nodeAffinity:
     {{- include "ex.apm.afinity" . | nindent 4 }}
   {{ end }}
+
+affinity_v2: {{- include "ex.apm.afinityifelseinline" . }}

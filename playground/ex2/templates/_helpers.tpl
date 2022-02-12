@@ -48,3 +48,35 @@ requiredDuringSchedulingIgnoredDuringExecution:
       values:
       - enabled
 {{- end }}
+
+{{- define "ex.apm.afinityifelseinline" -}}
+
+{{- if and .Values.affinity (eq .Values.apm "enabled") }}
+{{- if not (hasKey .Values.affinity "nodeAffinity") -}}
+{{/* lets support case when nodeAffinity is not defined */}}
+{{- range $key, $value := $.Values.affinity }}
+  {{ $key }}:
+    {{- toYaml $value | nindent 6 }}
+{{- end }}
+  nodeAffinity:
+    {{- include "ex.apm.afinity" . | nindent 4 }}
+{{- else if and (hasKey .Values.affinity "nodeAffinity") (not (hasKey .Values.affinity.nodeAffinity "requiredDuringSchedulingIgnoredDuringExecution")) -}}
+{{/* nodeAffinity present and not present requiredDuringSchedulingIgnoredDuringExecution  */}}
+{{- range $key, $value := $.Values.affinity }}
+  {{ $key }}:
+    {{- toYaml $value | nindent 6 }}
+    {{- if (eq $key "nodeAffinity") }}
+  {{- include "ex.apm.afinity" . | nindent 4 }}
+    {{- end }}
+{{- end }}
+{{- else if and (hasKey .Values.affinity "nodeAffinity") (hasKey .Values.affinity.nodeAffinity "requiredDuringSchedulingIgnoredDuringExecution") -}}
+{{/* nodeAffinity and requiredDuringSchedulingIgnoredDuringExecution both present. Apm not enabled. Should Warn!!  */}}
+{{- .Values.affinity | toYaml | nindent 2 }}
+{{ end }}
+{{- else if and .Values.affinity }}
+{{- .Values.affinity | toYaml | nindent 2 }}
+{{- else if (eq .Values.apm "enabled") }}
+nodeAffinity:
+  {{- include "ex.apm.afinity" . | nindent 4 }}
+{{ end }}
+{{- end }}
