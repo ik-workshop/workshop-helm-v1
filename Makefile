@@ -31,3 +31,4 @@ create: check-cmd
 	@mkdir playground/$(name)
 	@cp -r playground/template/ playground/$(name)/
 	@tree playground/$(name)
+	@touch exercises/$(name).README.md
