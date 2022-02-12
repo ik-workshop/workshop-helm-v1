@@ -13,9 +13,9 @@ This example showcase the following problem:
 - [Otputs](#otputs)
   - [Case 0](#case-0)
   - [Case 1](#case-1)
+  - [Case 2](#case-2)
   - [Case 3](#case-3)
   - [Case 4](#case-4)
-  - [Case 5](#case-5)
 - [Resources](#resources)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -68,7 +68,7 @@ affinity:
           - enabled
 ```
 
-### Case 3
+### Case 2
 
 _Input_
 
@@ -118,7 +118,7 @@ affinity:
         topologyKey: failure-domain.beta.kubernetes.io/zone
 ```
 
-### Case 4
+### Case 3
 
 _Input_
 
@@ -158,7 +158,7 @@ _Output_
 Error: execution error at (exercise/templates/test.yaml:2:4): This version of the chart does not support `apm=enabled` and .affinity.requiredDuringSchedulingIgnoredDuringExecution at the same time
 ```
 
-### Case 5
+### Case 4
 
 _Input_
 
