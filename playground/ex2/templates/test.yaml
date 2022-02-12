@@ -1,0 +1,5 @@
+spec:
+{{- if or .Values.affinity (eq .Values.apm "enabled") }}
+  affinity:
+  {{ include "additionalNodeAffinity" ( .Values ) | indent 4 }}
+{{- end }}
