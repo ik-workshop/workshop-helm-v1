@@ -1,9 +1,3 @@
-# Default values for ex1.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-replicaCount: 1
-
 affinity:
   podAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
@@ -22,14 +16,14 @@ affinity:
             operator: In
             values:
             - another-node-label-value
-  #   requiredDuringSchedulingIgnoredDuringExecution:
-  #     nodeSelectorTerms:
-  #       - matchExpressions:
-  #         - key: kubernetes.io/e2e-az-name
-  #           operator: In
-  #           values:
-  #           - e2e-az1
-  #           - e2e-az2
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/e2e-az-name
+            operator: In
+            values:
+            - e2e-az1
+            - e2e-az2
 
 # apm: disabled
 apm: disabled

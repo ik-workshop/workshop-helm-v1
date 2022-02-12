@@ -1,6 +1,6 @@
 {
   "files.associations": {
-    ".*/templates.*\\.yaml": "html",
+    ".*/templates/.*\\.yaml": "html",
     ".yamllint": "yaml"
   }
 }

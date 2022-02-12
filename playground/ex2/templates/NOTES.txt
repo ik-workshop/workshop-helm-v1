@@ -1,0 +1,9 @@
+{{- if (and (hasKey .Values.affinity "nodeAffinity") (hasKey .Values.affinity.nodeAffinity "requiredDuringSchedulingIgnoredDuringExecution")) }}
+
+###################################################################################
+####   WARNING: Not supported!!!                                               ####
+###################################################################################
+
+Not supported apm=enabled and affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution
+
+{{ end }}

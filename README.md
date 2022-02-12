@@ -47,6 +47,7 @@
 
 - [Helm in 10 Minutes](https://banzaicloud.com/blog/creating-helm-charts-part-2/)
 - [Helm: make the most from helm](https://blog.flant.com/advanced-helm-templating/)
+- [Formatting](https://helm.sh/docs/chart_best_practices/templates/)
 
 <!-- resources -->
 [template.generate]: https://github.com/ik-workshop/workshop-helm-v1/generate
