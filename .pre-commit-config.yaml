@@ -17,6 +17,10 @@ repos:
   - id: check-vcs-permalinks
   - id: check-xml
   - id: check-yaml
+    exclude: |
+      (?x)(
+        ^playground/
+      )
   - id: debug-statements
   - id: destroyed-symlinks
   - id: detect-aws-credentials
@@ -75,6 +79,10 @@ repos:
     files: \.(yaml|yml)$
     types: [file, yaml]
     entry: 'yamllint --strict'
+    exclude: |
+      (?x)(
+        ^playground/
+      )
 - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
   rev: v8.0.0
   hooks:
