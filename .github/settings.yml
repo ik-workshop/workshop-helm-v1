@@ -3,10 +3,10 @@ _extends: .github
 
 repository:
   # See https://developer.github.com/v3/repos/#edit for all available settings.
-  name: workshop-blueprint
-  description: ':factory: Workshop blueprint'
+  name: workshop-helm-v1
+  description: ':factory: Helm Workshop'
   homepage: https://ivankatliarchuk.github.io
-  topics: ivka, workshop, blueprint
+  topics: ivka, workshop, helm, kubernetes, templating
   private: false
   has_issues: true
   has_projects: false
